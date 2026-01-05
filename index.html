@@ -17,39 +17,24 @@
         <div id="column1" class="check-container">
             <h2>Daily Habits</h2>
             <div class="add">
-                <input type="text" id="input-box" placeholder="Add your habit"/>
-                <button>Add</button>
+                <input type="text" class="input" id="daily-input" placeholder="Add your habit"/>
+                <button onclick="addHabit('daily')">Add</button>
             </div>
-            <ul class="list-container">
-                <li class="checked">First Habit</li>
-                <li>Second Habit</li>
-                <li>Third Habit</li>
-            </ul>
+            <ul id="daily-list-container"></ul>
         </div>
 
         <div id="column2" class="check-container">
-            <h2>Frequent Habits</h2>
+            <h2>Non-Daily Habits</h2>
             <div class="add">
-                <input type="text" id="input-box" placeholder="Add your habit"/>
-                <button>Add</button>
+                <input type="text" class="input" id="non-daily-input" placeholder="Add your habit"/>
+                <button onclick="addHabit('nondaily')">Add</button>
             </div>
+            <ul id="non-daily-list-container"></ul>
         </div>
 
-        <div id="column3" class="check-container">
-            <h2>Infrequent Habits</h2>
-            <div class="add">
-                <input type="text" id="input-box" placeholder="Add your habit"/>
-                <button>Add</button>
-            </div>
-        </div>
-
-        <div id="column4" class="check-container">
-            <h2>Bonus Habits</h2>
-            <div class="add">
-                <input type="text" id="input-box" placeholder="Add your habit"/>
-                <button>Add</button>
-            </div>
-        </div>
     </main>
+    <script src="script.js"></script>
 </body>
 </html>
+
+<!-- color palette link: https://colorhunt.co/palette/ffdcdcfff2ebffe8cdffd6ba -->
