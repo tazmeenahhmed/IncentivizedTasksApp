@@ -45,3 +45,51 @@ p {
 #column4 {
     background-color: rgb(255 242 235 / 0.5)
 }
+
+.add {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #FFF2EB;
+    border-radius: 30px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+input {
+    flex: 1;
+    border: none; 
+    outline: none;
+    background: transparent;
+    padding: 10px;
+
+}
+
+button {
+    border: none; 
+    outline: none;
+    padding: 16px 30px;
+    background: #FFD6BA;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 40px;
+}
+
+ul li {
+    list-style: none;
+    font-size: 14px;
+    padding: 12px 8px 12px 20px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+}
+
+ul li::before {
+    content: '';
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+
+}
