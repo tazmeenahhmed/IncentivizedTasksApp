@@ -1,0 +1,47 @@
+body {
+    background-color: #FFDCDC;
+    font-family: monospace;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+.total-box {
+    height: 240px;
+    width: 300px;
+    padding: 20px; 
+    margin: auto;
+}
+
+.check-container {
+    margin: auto;
+    float: left;
+    height: 480px;
+    width: 20%;
+    padding: 20px 20px;
+}
+
+#column1 {
+    background-color: rgb(255 242 235 / 0.5)
+}
+
+#column2 {
+    background-color: rgb(255 242 235 / 0.5)
+}
+
+#column3 {
+    background-color: rgb(255 242 235 / 0.5)
+}
+
+#column4 {
+    background-color: rgb(255 242 235 / 0.5)
+}
