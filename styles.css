@@ -83,6 +83,11 @@ ul li {
     user-select: none;
     cursor: pointer;
     position: relative;
+    background-image: url(images/unchecked-circle.png);
+    background-size: cover;
+    background-position: center;
+    top: 12px;
+    left: 8px;
 }
 
 ul li::before {
