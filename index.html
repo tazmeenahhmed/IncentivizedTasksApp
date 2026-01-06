@@ -9,27 +9,38 @@
 <body>
     <h1>Incentivized Habits App</h1>
     <main>
-        <div id="total-box">
+        <div id="spendings-box">
             <p>Total spendings saved up: </p>
             <h2>$10.00</h2>
         </div>
 
-        <div id="column1" class="check-container">
-            <h2>Daily Habits</h2>
-            <div class="add">
-                <input type="text" class="input" id="daily-input" placeholder="Add your habit"/>
-                <button onclick="addHabit('daily')">Add</button>
+        <div class="outer-container">
+            <div class="check-container">
+                <h2>Daily Habits</h2>
+                <div class="add">
+                    <input type="text" class="input" id="daily-input" placeholder="Add your habit"/>
+                    <button onclick="addHabit('daily')">Add</button>
+                </div>
+                <ul id="daily-list-container"></ul>
             </div>
-            <ul id="daily-list-container"></ul>
+
+            <div class="check-container">
+                <h2>Non-Daily Habits</h2>
+                <div class="add">
+                    <input type="text" class="input" id="non-daily-input" placeholder="Add your habit"/>
+                    <button onclick="addHabit('nondaily')">Add</button>
+                </div>
+                <ul id="non-daily-list-container"></ul>
+            </div>
         </div>
 
-        <div id="column2" class="check-container">
-            <h2>Non-Daily Habits</h2>
-            <div class="add">
-                <input type="text" class="input" id="non-daily-input" placeholder="Add your habit"/>
-                <button onclick="addHabit('nondaily')">Add</button>
-            </div>
-            <ul id="non-daily-list-container"></ul>
+        <div id="wishlist-box">
+            <h2>Wishlist:</h2>
+        </div>
+
+        <div id="placeholder-card">
+            <h3>Item 1</h3>
+            <p>A placeholder for different cards within the wishlist!</p>
         </div>
 
     </main>
