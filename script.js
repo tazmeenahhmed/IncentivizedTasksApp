@@ -16,6 +16,7 @@ function addHabit(type) {
         let li = document.createElement("li");
         li.innerHTML = inputBox.value;
         listContainer.appendChild(li);
+
         let span = document.createElement("span");
         span.innerHTML = "\u00d7";
         li.appendChild(span);
@@ -93,6 +94,7 @@ form.addEventListener('submit', function(e) {
     const itemName = document.getElementById('title');
     const itemDesc = document.getElementById('description');
     const itemPrice = document.getElementById('price');
+    const itemImage = document.getElementById('fileUpload');
 
     const outerDiv = document.createElement('div');
     outerDiv.setAttribute('id', 'wishlist-card');
@@ -101,9 +103,14 @@ form.addEventListener('submit', function(e) {
     imgDiv.setAttribute('class', 'wishlist-child');
 
     const img = document.createElement('img');
+    const imgUpload = document.getElementById('fileUpload');
+    const image = imgUpload.files[0];
+    if (!image.type.includes('image')) {
+        return alert('Only images are allowed!');
+    }
+    img.src = URL.createObjectURL(image);
     img.setAttribute('class', 'wishlist-img');
-    img.setAttribute('src', 'images/rolife.webp');
-    img.setAttribute('alt', 'rolife book nook set of a garden house');
+    img.setAttribute('alt', 'picture of ' + itemName.value);
     imgDiv.appendChild(img);
 
     const contentDiv = document.createElement('div');
@@ -122,10 +129,13 @@ form.addEventListener('submit', function(e) {
     contentDiv.appendChild(descP);
     contentDiv.appendChild(priceP);
 
+    let span = document.createElement("span");
+    span.innerHTML = "\u00d7";
+
     outerDiv.appendChild(imgDiv);
     outerDiv.appendChild(contentDiv);
+    outerDiv.appendChild(span);
 
-    //document.getElementById('wishlist-card-area').append(outerDiv);
     wishlistDiv.insertBefore(outerDiv, formDiv);
     form.reset();
 });
