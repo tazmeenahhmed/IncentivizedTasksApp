@@ -19,16 +19,17 @@
                 <li class="item"><a href="#">Home</a></li>
                 <li class="item"><a href="#">Wishlist</a></li>
                 <li class="item"><a href="#">About</a></li>
-                <button class="nav-button"><a href="#">Login</a></button>
-                <button class="nav-button"><a href="#">Sign Up</a></button>
+                <button class="btn"><a href="#">Login</a></button>
+                <button class="btn"><a href="#">Sign Up</a></button>
             </ul>
         </div>
     </nav>
 
     <main>
         <div id="spendings-box">
-            <p class="spending-desc">Total spendings saved up: </p>
+            <p class="spending-desc">TOTAL SPENDING MONEY: </p>
             <p class="spending-desc">$10.00</p>
+            <img id="piggybank-img" src="images/piggy-bank.png" alt="pink piggy bank with money floating around"/>
         </div>
 
         <div class="outer-container">
@@ -36,7 +37,7 @@
                 <h2>Daily Habits</h2>
                 <div class="add">
                     <input type="text" class="input" id="daily-input" placeholder="Add your habit"/>
-                    <button onclick="addHabit('daily')">Add</button>
+                    <button class="btn" onclick="addHabit('daily')">Add</button>
                 </div>
                 <ul id="daily-list-container"></ul>
             </div>
@@ -45,7 +46,7 @@
                 <h2>Non-Daily Habits</h2>
                 <div class="add">
                     <input type="text" class="input" id="non-daily-input" placeholder="Add your habit"/>
-                    <button onclick="addHabit('nondaily')">Add</button>
+                    <button class="btn" onclick="addHabit('nondaily')">Add</button>
                 </div>
                 <ul id="non-daily-list-container"></ul>
             </div>
@@ -55,37 +56,48 @@
             <h2>Wishlist:</h2>
         </div>
 
-        <div id="placeholder-card">
-            <div class="placeholder-child">
-                <img class="wishlist-img" src="images/rolife.webp" alt="rolife book nook set of a garden house"/>
+        <div id="wishlist-card-area">
+            <!-- TEMPORARY ITEM, REMOVE WHEN FINISH PROJECT-->
+            <div id="wishlist-card">
+                <div class="wishlist-child">
+                    <img class="wishlist-img" src="images/rolife.webp" alt="rolife book nook set of a garden house"/>
+                </div>
+                <div class="wishlist-child">
+                    <a href="https://www.rolifeonline.com/products/rolife-holiday-garden-house-book-nook-kit-tgb06" target="_blank">
+                        <p>Rolife Book Nook - Holiday Garden House</p>
+                    </a>
+                    <p>
+                        Bring the Holiday Garden House into your world and witness the blossoming of romance and tranquility! The soft LED lights add a magical glow,
+                        making it the perfect addition to your bookshelf or a thoughtful Christmas gift for DIY enthusiasts. Includes: openable windows, 14 variant
+                        flower types, retro home style, french floriculture, and a rural style. Approximately 5 hours of assembly time required.
+                    </p>
+                    <p>PRICE: $46.99 USD</p>
+                </div>
             </div>
-            <div class="placeholder-child">
-                <a href="https://www.rolifeonline.com/products/rolife-holiday-garden-house-book-nook-kit-tgb06" target="_blank">
-                    <p>Rolife Book Nook - Holiday Garden House</p>
-                </a>
-                <p>
-                    Bring the Holiday Garden House into your world and witness the blossoming of romance and tranquility! The soft LED lights add a magical glow,
-                    making it the perfect addition to your bookshelf or a thoughtful Christmas gift for DIY enthusiasts. Includes: openable windows, 14 variant
-                    flower types, retro home style, french floriculture, and a rural style. Approximately 5 hours of assembly time required.
-                </p>
-                <p>PRICE: $46.99 USD</p>
-            </div>
-        </div>
 
-                <div id="placeholder-card">
-            <div class="placeholder-child">
-                <img class="wishlist-img" src="images/alice.webp" alt="rolife book nook set of a alice in wonderland falling into wonderland"/>
-            </div>
-            <div class="placeholder-child">
-                <a href="https://www.rolifeonline.com/products/rolife-diy-book-nook-shelf-insert-fall-into-wonder-tgb12" target="_blank">
-                    <p>Rolife DIY Book Nook - Fall into Wonder </p>
-                </a>
-                <p>
-                    Build, get inspired, and dream with this otherworldly book nook. The Fall Into Wonder bookshelf insert takes you into a creative adventure
-                    of endless possibilities. Perfect as a Christmas gift or holiday crafting project, it's sure to inspire and captivate anyone who loves a
-                    bit of magic during the festive season. Approximately 5 hours of assembly time required.
-                </p>
-                <p>PRICE: $49.99 USD</p>
+            <div id="wishlist-add">
+                <button id="openPopup" class="btn">Add a new item to wishlist</button>
+                <div id="popupForm">
+                    <div class="form-content">
+                        <span class="close-btn" id="closePopup">&times;</span>
+                        <h2>Add an Item</h2>
+                        <form id="popupInfoForm">
+                            <div class="input-group">
+                                <label for="title">Item Title</label>
+                                <input type="text" id="title" placeholder="i.e Rolife DIY Book Nook" required/>
+                            </div>
+                            <div class="input-group">
+                                <label for="description">Item Description</label>
+                                <textarea id="description" placeholder="Enter product description" required></textarea>
+                            </div>
+                            <div class="input-group">
+                                <label for="price">Item Price</label>
+                                <input type="text" id="price" placeholder="i.e 49.99" required/>
+                            </div>
+                            <button type="submit" id="submitInformation" class="btn">Add</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
 

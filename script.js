@@ -1,3 +1,5 @@
+/* Adding a new item to a checklist*/
+
 function addHabit(type) {
     const inputBox = document.getElementById(
         type === 'daily' ? 'daily-input' : 'non-daily-input'
@@ -57,3 +59,74 @@ function showHabit() {
         localStorage.getItem("nondaily-data") || "";
 }
 showHabit();
+
+/* Adding a new item to the wishlist*/
+const popupForm = document.getElementById("popupForm");
+const openPopupBtn = document.getElementById("openPopup");
+const closePopupBtn = document.getElementById("closePopup");
+const form = document.getElementById("popupInfoForm");
+const submitBtn = document.getElementById("submitInformation");
+const formDiv = document.getElementById("wishlist-add");
+const wishlistDiv = document.getElementById("wishlist-card-area");
+
+openPopupBtn.addEventListener('click', function() {
+    popupForm.style.display = 'flex';
+});
+
+closePopupBtn.addEventListener('click', function() {
+    popupForm.style.display = 'none';
+});
+
+submitBtn.addEventListener('click', function() {
+    popupForm.style.display = 'none';
+});
+
+window.addEventListener('click', function(event) {
+    if(event.target == popupForm) {
+        popupForm.style.display = 'none';
+    }
+});
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const itemName = document.getElementById('title');
+    const itemDesc = document.getElementById('description');
+    const itemPrice = document.getElementById('price');
+
+    const outerDiv = document.createElement('div');
+    outerDiv.setAttribute('id', 'wishlist-card');
+
+    const imgDiv = document.createElement('div');
+    imgDiv.setAttribute('class', 'wishlist-child');
+
+    const img = document.createElement('img');
+    img.setAttribute('class', 'wishlist-img');
+    img.setAttribute('src', 'images/rolife.webp');
+    img.setAttribute('alt', 'rolife book nook set of a garden house');
+    imgDiv.appendChild(img);
+
+    const contentDiv = document.createElement('div');
+    contentDiv.setAttribute('class', 'wishlist-child');
+
+    const titleP = document.createElement('p');
+    titleP.textContent = itemName.value;
+
+    const descP = document.createElement('p');
+    descP.textContent = itemDesc.value;
+
+    const priceP = document.createElement('p');
+    priceP.textContent = "PRICE: $" + itemPrice.value;
+
+    contentDiv.appendChild(titleP);
+    contentDiv.appendChild(descP);
+    contentDiv.appendChild(priceP);
+
+    outerDiv.appendChild(imgDiv);
+    outerDiv.appendChild(contentDiv);
+
+    //document.getElementById('wishlist-card-area').append(outerDiv);
+    wishlistDiv.insertBefore(outerDiv, formDiv);
+    form.reset();
+});
+
