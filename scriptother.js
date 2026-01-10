@@ -1,12 +1,19 @@
-/* Money counter */
-
-
-/* Checkbox toggling */
+/* Checkbox toggling & Money counter*/
 const listContainer = document.getElementsByClassName("check-container");
+const valueDisplay = document.getElementById('savedAmount');
+let totalValue = 0; 
 
 document.addEventListener('click', function(e) {
     if (e.target.tagName === 'LI') {
-        e.target.classList.toggle("checked");
+        if (e.target.classList.contains("checked")) {
+            e.target.classList.remove('checked');
+            totalValue = totalValue - parseFloat(e.target.dataset.value);
+            valueDisplay.innerHTML = totalValue;
+        } else {
+            e.target.classList.add('checked');
+            totalValue = totalValue + parseFloat(e.target.dataset.value);
+            valueDisplay.innerHTML = totalValue;
+        }
     } 
 
     else if (e.target.tagName === 'SPAN') {
@@ -108,7 +115,8 @@ habitForm.addEventListener('submit', function(e) {
     const holder = document.createElement('p');
     holder.textContent = '|';
     const value = document.createElement('h3');
-    value.textContent = "Value: $" + habitAmount.value;
+    value.textContent = "Value: $" + habitValue.value;
+    li.setAttribute('data-value', habitValue.value);
     textDiv.appendChild(frequency);
     textDiv.appendChild(holder);
     textDiv.appendChild(value);
