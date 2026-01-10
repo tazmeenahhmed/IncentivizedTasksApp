@@ -12,7 +12,14 @@ p {
     font-size: 15px;
 }
 
-/**** HEADER ****/
+.centered-items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+/***** HEADER *****/
 
 .navbar {
     background: #FFE8CD;
@@ -23,7 +30,7 @@ p {
 }
 
 .navdiv {
-    display: flex; 
+    display: flex;
     align-items: center;
     justify-content: space-between;
 }
@@ -31,12 +38,12 @@ p {
 #complete-logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
 }
 
-#logo-words{
+#logo-words {
     font-size: 30px;
-    font-weight: 600;
+    font-weight: bold;
     color: white;
     text-decoration: none;
 }
@@ -55,50 +62,44 @@ p {
 }
 
 .item a {
-    color: white;
     font-size: 20px;
-    text-decoration: none;
     font-weight: bold;
+    color: white;
+    text-decoration: none;
     margin-right: 25px;
 }
 
 .btn {
-    border: none; 
-    outline: none;
-    padding: 16px 30px;
     background: #FFD6BA;
-    color: #fff;
+    color: #fff; 
+    border: none;
+    outline: none;
     font-size: 16px;
     cursor: pointer;
     border-radius: 40px;
+    padding: 16px 30px;
 }
 
 .btn a {
-    color: white;
-    font-weight: bold;
     font-size: 20px;
-    font-family: calibri;
+    font-weight: bold;
+    color: white;
     text-decoration: none;
+    font-family: calibri;
 }
 
-/**** MONEY COUNTER ****/
-
+/***** MONEY-COUNTER *****/
 #spendings-box {
     height: 100;
     width: 85%;
-    padding: 20px; 
+    padding: 20px;
     margin: auto;
     background-color: rgb(255 242 235 / 0.5);
 
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
     justify-content: center;
-}
-
-#piggybank-img {
-    height: 80px;
-    width:80px;
 }
 
 .spending-desc {
@@ -106,154 +107,130 @@ p {
     font-size: 25px;
 }
 
-/**** HABITS LISTS ****/
-
-.outer-container {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin-top: 30px;
-    margin-bottom: 30px;
+#piggybank-img {
+    height: 150px;
+    width: 150px;
 }
 
-.check-container {
-    margin: 0;
-    float: none;
-    height: 480px;
-    width: 40%;
-    padding: 20px 20px;
-    border-radius: 15%;
-    background-color: rgb(255 242 235 / 0.5);
-}
-
-.add {
+.detract-money {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     background: #FFF2EB;
     border-radius: 30px;
-    padding-left: 20px;
-    margin-bottom: 20px;
+    padding-left: 30px;
 }
 
 input {
     flex: 1;
-    border: none; 
+    border: none;
     outline: none;
-    background: transparent;
+    background: transparent; 
     padding: 10px;
-
 }
 
-#daily-list-container li,
-#non-daily-list-container li {
+/***** HABIT-CARDS *****/
+
+#habits-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin: 30px auto;
+    width: 85%;
+}
+
+.individual-habit {
+    margin: 0;
+    float: none;
+    height: 380px;
+    padding: 20px 20px;
+    border-radius: 8%;
+    background-color: rgb(255 242 235 / 0.5)
+}
+
+#habits-add {
+    height: 100;
+    width: 85%;
+    padding: 20px;
+    margin: 30px auto;
+    background-color: rgb(255 242 235 / 0.5);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.check-container .check-item {
     list-style: none;
-    font-size: 14px;
-    padding: 12px 8px 12px 10px;
+    font-size: 20px;
+    padding: 12px 8px 12px 80px;
     user-select: none;
     cursor: pointer;
     position: relative;
 }
 
-#daily-list-container li::before,
-#non-daily-list-container li::before {
+.check-container .check-item::before {
     content: '';
     position: absolute;
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%; 
     background-image: url(images/unchecked-circle.png);
     background-size: cover;
     background-position: center;
-    top: 12px;
-    left: -20px;
+    top: 8px;
+    right: 20px;
 }
 
-#daily-list-container li.checked,
-#non-daily-list-container li.checked {
+.check-container .check-item.checked {
     color: #555;
-    text-decoration: line-through;
-
 }
 
-#daily-list-container li.checked::before,
-#non-daily-list-container li.checked::before {
-    background-image: url(images/checked-circle.png)
+.check-container .check-item.checked::before {
+    background-image: url(images/checked-circle.png);
 }
 
-#daily-list-container li span,
-#non-daily-list-container li span {
-    position: absolute;
-    right: 0;
-    top: 5px;
-    width: 40px;
-    height: 40px;
-    font-size: 22px;
+.habit-span {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
     color: #555;
-    line-height: 40px;
     text-align: center;
     border-radius: 50%;
-}
-
-#daily-list-container li span:hover,
-#non-daily-list-container li span:hover {
-    color: white;
-}
-
-/**** WISHLIST ****/
-
-#wishlist-card span {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 22px;
-    color: #555;
     cursor: pointer;
-    width: 40px;
-    height: 40px;
-
 }
 
-#wishlist-card span:hover {
+.hide {
+  display: none;
+}
+
+.habit-span:hover + .hide {
+  display: block;
+  color: red;
+}
+
+.habit-span:hover {
     color: white;
 }
 
-#wishlist-box {
-    height: 80;
-    width: 85%;
-    padding: 20px; 
-    margin: auto;
-    background-color: rgb(255 242 235 / 0.5);
-}
-
-#wishlist-card {
-    position: relative;
-    height: 150px;
-    width: 85%;
-    padding: 20px 20px;
-    margin: auto;
-    margin-top:30px;
-    background-color: rgb(255 242 235 / 0.5);
-    border-radius: 50px;
-
+.timer-box {
     display: flex;
-    justify-content: left;
-    gap: 20px;
-}
-
-.wishlist-img {
-    width: 150px;
-    height: 150px;
-    border-radius: 15%;
-}
-
-#wishlist-add {
-    margin-top: 20px;
-    display: flex;
+    gap: 50px;
+    align-items: center;
     justify-content: center;
 }
 
-#popupForm {
+.time {
+    text-align: center;
+}
+
+.time h2 {
+    font-weight: 100;
+}
+
+#habitPopup {
     display: none;
     position: fixed;
     top: 0;
@@ -298,6 +275,27 @@ input {
     resize: vertical;
 }
 
-/**** FOOTER ****/
+/***** HOW IT WORKS PAGE *****/
 
+/***** WISHLIST PAGE *****/
 
+/***** FOOTER *****/
+
+.footer {
+    background: #FFE8CD;
+    font-family: calibiri;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-top: 30px;
+}
+
+.footerdiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#footer-text {
+    color: white;
+    font-weight: bold;
+}

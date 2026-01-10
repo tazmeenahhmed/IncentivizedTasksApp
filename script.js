@@ -30,7 +30,7 @@ document.addEventListener("click", function(e) {
         e.target.classList.toggle("checked");
     } 
     
-    else if (e.target.tagName === "SPAN") {
+   else if (e.target.tagName === "SPAN") {
         e.target.parentElement.remove();
     }
 
@@ -139,4 +139,7 @@ form.addEventListener('submit', function(e) {
     wishlistDiv.insertBefore(outerDiv, formDiv);
     form.reset();
 });
+
+/* Updating the total money count */
+
 
