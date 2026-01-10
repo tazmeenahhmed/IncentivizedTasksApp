@@ -7,12 +7,12 @@ document.addEventListener('click', function(e) {
     if (e.target.tagName === 'LI') {
         if (e.target.classList.contains("checked")) {
             e.target.classList.remove('checked');
-            totalValue = totalValue - parseFloat(e.target.dataset.value);
-            valueDisplay.innerHTML = totalValue;
+            totalValue -= parseFloat(e.target.dataset.value);
+            valueDisplay.innerHTML = totalValue.toFixed(2);
         } else {
             e.target.classList.add('checked');
-            totalValue = totalValue + parseFloat(e.target.dataset.value);
-            valueDisplay.innerHTML = totalValue;
+            totalValue += parseFloat(e.target.dataset.value);
+            valueDisplay.innerHTML = totalValue.toFixed(2);
         }
     } 
 
@@ -20,6 +20,17 @@ document.addEventListener('click', function(e) {
         e.target.parentElement.remove();
     }
 }, false);
+
+function detractTotal() {
+    const amount = document.getElementById('detractInput');
+    if(amount.value == '') {
+        alert("Please enter a value.");
+    } else {
+        totalValue -= parseFloat(amount.value);
+        valueDisplay.innerHTML = totalValue.toFixed(2);
+    }
+    amount.value = '';
+}
 
 /* Timer countdown */
 const daysElement = document.getElementById('days');
