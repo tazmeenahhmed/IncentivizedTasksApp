@@ -1,3 +1,6 @@
+/* Navbar linking */
+
+
 /* Checkbox toggling & Money counter*/
 const listContainer = document.getElementsByClassName("check-container");
 const valueDisplay = document.getElementById('savedAmount');
