@@ -1,145 +1,192 @@
-/* Adding a new item to a checklist*/
+/* Checkbox toggling & Money counter*/
+const listContainer = document.getElementsByClassName("check-container");
+const valueDisplay = document.getElementById('savedAmount');
+let totalValue = 0; 
 
-function addHabit(type) {
-    const inputBox = document.getElementById(
-        type === 'daily' ? 'daily-input' : 'non-daily-input'
-    );
-
-    const listContainer = document.getElementById(
-        type === 'daily' ? 'daily-list-container' : 'non-daily-list-container'
-    );
-
-    if(inputBox.value === '') {
-        alert("Write a habit down first!");
-    } else {
-
-        let li = document.createElement("li");
-        li.innerHTML = inputBox.value;
-        listContainer.appendChild(li);
-
-        let span = document.createElement("span");
-        span.innerHTML = "\u00d7";
-        li.appendChild(span);
-    }
-    inputBox.value = "";
-    saveData(type);
-}
-
-document.addEventListener("click", function(e) {
-    if (e.target.tagName === "LI") {
-        e.target.classList.toggle("checked");
+document.addEventListener('click', function(e) {
+    if (e.target.tagName === 'LI') {
+        if (e.target.classList.contains("checked")) {
+            e.target.classList.remove('checked');
+            totalValue -= parseFloat(e.target.dataset.value);
+            valueDisplay.innerHTML = totalValue.toFixed(2);
+        } else {
+            e.target.classList.add('checked');
+            totalValue += parseFloat(e.target.dataset.value);
+            valueDisplay.innerHTML = totalValue.toFixed(2);
+        }
     } 
-    
-   else if (e.target.tagName === "SPAN") {
-        e.target.parentElement.remove();
+
+    else if (e.target.tagName === 'SPAN') {
+        e.target.parentElement.parentElement.remove();
     }
+}, false);
 
-    if (e.target.closest("#daily-list-container")) {
-        saveData("daily");
+function detractTotal() {
+    const amount = document.getElementById('detractInput');
+    if(amount.value == '') {
+        alert("Please enter a value.");
+    } else {
+        totalValue -= parseFloat(amount.value);
+        valueDisplay.innerHTML = totalValue.toFixed(2);
     }
-
-    if (e.target.closest("#non-daily-list-container")) {
-        saveData("nondaily");
-    }
-
-});
-
-function saveData(type) {
-    const list = document.getElementById(
-        type === 'daily' ? 'daily-list-container' : 'non-daily-list-container'
-    );
-
-    localStorage.setItem(type + "-data", list.innerHTML);
+    amount.value = '';
 }
 
-function showHabit() {
-    document.getElementById("daily-list-container").innerHTML =
-        localStorage.getItem("daily-data") || "";
+/* Add habit popup form */
+const habitPopupForm = document.getElementById("habitPopup");
+const openHabitPopupBtn = document.getElementById("openHabitPopup");
+const closeHabitPopupBtn = document.getElementById("closeHabitPopup");
+const submitHabitBtn = document.getElementById("submitHabitInformation");
+const habitForm = document.getElementById("habitPopupForm");
+const habitsDiv = document.getElementById("habits-box");
 
-    document.getElementById("non-daily-list-container").innerHTML =
-        localStorage.getItem("nondaily-data") || "";
-}
-showHabit();
 
-/* Adding a new item to the wishlist*/
-const popupForm = document.getElementById("popupForm");
-const openPopupBtn = document.getElementById("openPopup");
-const closePopupBtn = document.getElementById("closePopup");
-const form = document.getElementById("popupInfoForm");
-const submitBtn = document.getElementById("submitInformation");
-const formDiv = document.getElementById("wishlist-add");
-const wishlistDiv = document.getElementById("wishlist-card-area");
-
-openPopupBtn.addEventListener('click', function() {
-    popupForm.style.display = 'flex';
+openHabitPopupBtn.addEventListener('click', function() {
+    habitPopupForm.style.display = 'flex';
 });
 
-closePopupBtn.addEventListener('click', function() {
-    popupForm.style.display = 'none';
+closeHabitPopupBtn.addEventListener('click', function() {
+    habitPopupForm.style.display = 'none';
 });
 
-submitBtn.addEventListener('click', function() {
-    popupForm.style.display = 'none';
+submitHabitBtn.addEventListener('click', function() {
+    habitPopupForm.style.display = 'none';
 });
 
 window.addEventListener('click', function(event) {
-    if(event.target == popupForm) {
-        popupForm.style.display = 'none';
+    if(event.target == habitPopupForm) {
+        habitPopupForm.style.display = 'none';
     }
 });
 
-form.addEventListener('submit', function(e) {
+habitForm.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    const itemName = document.getElementById('title');
-    const itemDesc = document.getElementById('description');
-    const itemPrice = document.getElementById('price');
-    const itemImage = document.getElementById('fileUpload');
+    const habitName = document.getElementById('habitTitle');
+    const habitFrequency = document.getElementById('habitFrequency');
+    const habitDescription = document.getElementById('habitDescription');
+    const habitValue = document.getElementById('habitAmount');
 
     const outerDiv = document.createElement('div');
-    outerDiv.setAttribute('id', 'wishlist-card');
+    outerDiv.setAttribute('class', 'individual-habit');
+    outerDiv.setAttribute('data-time', habitFrequency.value);
+    outerDiv.setAttribute('data-nextReset', calculateNextReset(habitFrequency.value));
 
-    const imgDiv = document.createElement('div');
-    imgDiv.setAttribute('class', 'wishlist-child');
-
-    const img = document.createElement('img');
-    const imgUpload = document.getElementById('fileUpload');
-    const image = imgUpload.files[0];
-    if (!image.type.includes('image')) {
-        return alert('Only images are allowed!');
-    }
-    img.src = URL.createObjectURL(image);
-    img.setAttribute('class', 'wishlist-img');
-    img.setAttribute('alt', 'picture of ' + itemName.value);
-    imgDiv.appendChild(img);
-
-    const contentDiv = document.createElement('div');
-    contentDiv.setAttribute('class', 'wishlist-child');
-
-    const titleP = document.createElement('p');
-    titleP.textContent = itemName.value;
-
-    const descP = document.createElement('p');
-    descP.textContent = itemDesc.value;
-
-    const priceP = document.createElement('p');
-    priceP.textContent = "PRICE: $" + itemPrice.value;
-
-    contentDiv.appendChild(titleP);
-    contentDiv.appendChild(descP);
-    contentDiv.appendChild(priceP);
-
-    let span = document.createElement("span");
-    span.innerHTML = "\u00d7";
-
-    outerDiv.appendChild(imgDiv);
-    outerDiv.appendChild(contentDiv);
+    const span = document.createElement('span');
+    span.setAttribute('class', 'habit-span');
+    span.innerHTML = "&times;";
     outerDiv.appendChild(span);
 
-    wishlistDiv.insertBefore(outerDiv, formDiv);
-    form.reset();
+    const hide = document.createElement('p');
+    hide.setAttribute('class', 'hide');
+    hide.textContent = "Delete this habit.";
+    outerDiv.appendChild(hide);
+
+    const ul = document.createElement('ul');
+    ul.setAttribute('class', 'check-container');
+    const li = document.createElement('li');
+    li.setAttribute('class', 'check-item');
+    li.textContent = habitName.value;
+    ul.appendChild(li);
+    outerDiv.appendChild(ul);
+
+    const textDiv = document.createElement('div');
+    textDiv.setAttribute('class', 'centered-items');
+    const frequency = document.createElement('h3');
+    frequency.textContent = "Frequency: " + habitFrequency.value;
+    const holder = document.createElement('p');
+    holder.textContent = '|';
+    const value = document.createElement('h3');
+    value.textContent = "Value: $" + habitValue.value;
+    li.setAttribute('data-value', habitValue.value);
+    textDiv.appendChild(frequency);
+    textDiv.appendChild(holder);
+    textDiv.appendChild(value);
+    outerDiv.appendChild(textDiv);
+
+    const description = document.createElement('p');
+    description.textContent = habitDescription.value;
+    outerDiv.appendChild(description);
+
+    const time = document.createElement('h3');
+    time.textContent = "TIME REMAINING";
+    outerDiv.appendChild(time);
+
+    const timeDiv = document.createElement('div');
+    timeDiv.setAttribute('class', 'timer-box');
+
+    const daysDiv = document.createElement('div');
+    daysDiv.setAttribute('class', 'time');
+    const daysTime = document.createElement('h3');
+    daysTime.setAttribute('class', 'days');
+    const daysP = document.createElement('p');
+    daysP.textContent = "Days";
+    daysDiv.appendChild(daysTime);
+    daysDiv.appendChild(daysP);
+    timeDiv.appendChild(daysDiv);
+
+    const hoursDiv = document.createElement('div');
+    hoursDiv.setAttribute('class', 'time');
+    const hoursTime = document.createElement('h3');
+    hoursTime.setAttribute('class', 'hours');
+    const hoursP = document.createElement('p');
+    hoursP.textContent = "Hours";
+    hoursDiv.appendChild(hoursTime);
+    hoursDiv.appendChild(hoursP);
+    timeDiv.appendChild(hoursDiv);
+
+    const minutesDiv = document.createElement('div');
+    minutesDiv.setAttribute('class', 'time');
+    const minutesTime = document.createElement('h3');
+    minutesTime.setAttribute('class', 'minutes');
+    const minutesP = document.createElement('p');
+    minutesP.textContent = "Minutes";
+    minutesDiv.appendChild(minutesTime);
+    minutesDiv.appendChild(minutesP);
+    timeDiv.appendChild(minutesDiv);
+
+    const secondsDiv = document.createElement('div');
+    secondsDiv.setAttribute('class', 'time');
+    const secondsTime = document.createElement('h3');
+    secondsTime.setAttribute('class', 'seconds');
+    const secondsP = document.createElement('p');
+    secondsP.textContent = "Seconds";
+    secondsDiv.appendChild(secondsTime);
+    secondsDiv.appendChild(secondsP);
+    timeDiv.appendChild(secondsDiv);
+
+    outerDiv.appendChild(timeDiv);
+    habitsDiv.appendChild(outerDiv);
+    habitForm.reset();
 });
 
-/* Updating the total money count */
+/* 
+    LINKS TO MAKING A AUTO RESET TIMER:
+    https://www.allwebdevhelp.com/javascript/js-help-tutorials.php?i=44460
+    https://www.youtube.com/watch?v=rdn4XR518uI
+    https://codepal.ai/code-generator/query/3gxFmoPS/javascript-countdown-reset-midnight
+*/
 
+/* Timer countdown */
+const daysElement = document.getElementByClassName('days');
+const hoursElement = document.getElementByClassName('hours'); 
+const minutesElement = document.getElementByClassName('minutes');
+const secondsElement = document.getElementByClassName('seconds');
 
+const targetDate = new Date('January 10 2026 00:00:00').getTime();
+
+function timers() {
+    const currentDate = new Date().getTime();
+    const distance = targetDate - currentDate;
+
+    const days = Math.floor(distance / 1000 / 60 / 60 / 24);
+    const hours = Math.floor(distance / 1000 / 60 / 60) % 24;
+    const minutes = Math.floor(distance / 1000 / 60) % 60;
+    const seconds = Math.floor(distance / 1000) % 60;
+
+    daysElement.innerHTML = days;
+    hoursElement.innerHTML = hours;
+    minutesElement.innerHTML = minutes;
+    secondsElement.innerHTML = seconds;
+}
+setInterval(timers, 1000);
