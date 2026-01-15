@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incentived Habits App</title>
+    <link href="styles.css" rel="stylesheet"/>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="navdiv">
+            <div id="complete-logo">
+                <img id="logo-img" src="images/icon.png" alt="a notepad and a pencil poised to write on it"/>
+                <a id="logo-words" href="#">Incentivized Habits</a>
+            </div>
+
+            <ul id="nav-links">
+                <li class="item"><a href="home.html">Home</a></li>
+                <li class="item"><a href="about.html">How it Works</a></li>
+                <li class="item"><a href="wishlist.html">Wishlist</a></li>
+                <button class="btn"><a href="#">Login</a></button>
+                <!--If going forward with functional login, make login in/sign up disappear
+                and replaced with person's icon and account info link-->
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div id="wishlist-title">
+            <h2>YOUR WISHLIST</h2>
+            <p>Keep track of the items you want to spend your habits money on here.</p>
+        </div>
+
+        <div id="wishlist-card-area">
+            <div id="wishlist-add">
+                <button id="openWishlistPopup" class="btn">Add a new item to the wishlist</button>
+                <div id="wishlistPopup">
+                    <div class="form-content">
+                        <span class="close-btn" id="closeWishlistPopup">&times;</span>
+                        <h2>Add an Item</h2>
+                        <form id="wishlistPopupForm">
+                            <div class="input-group">
+                                <label for="wishlistTitle">Item Title</label>
+                                <input type="text" id="wishlistTitle" placeholder="i.e Rolife DIY Book Nook" required/>
+                            </div>
+                            <div class="input-group">
+                                <label for="wishlistDesc">Item Description</label>
+                                <textarea id="wishlistDesc" placeholder="Enter product description" required></textarea>
+                            </div>
+                            <div class="input-group">
+                                <label for="wishlistPrice">Item Price</label>
+                                <input type="text" id="wishlistPrice" placeholder="i.e 49.99" required/>
+                            </div>
+                            <div class="input-group">
+                                <label for="wishlistLink">Item Link</label>
+                                <input type="text" id="wishlistLink" placeholder="i.e Amazon, Target, EBay, etc" required/>
+                            </div>
+                            <div class="input-group">
+                                <label for="wishlistImage">Item Image</label>
+                                <input type="file" id="wishlistFileUpload" name="wishlistFileUpload" accept="img/*"/>
+                            </div>
+                            <button type="submit" id="submitWishlistInformation" class="btn">Add</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="wishlist-card">
+                <div class="wishlist-card-child">
+                    <img class="wishlist-img" src="images/rolife.webp" alt="rolife book nook set of a garden house"/>
+                </div>
+                <div class="wishlist-card-child">
+                    <a href="https://www.rolifeonline.com/products/rolife-holiday-garden-house-book-nook-kit-tgb06" target="_blank">
+                        <p>Rolife Book Nook - Holiday Garden House</p>
+                    </a>
+                    <p>
+                        Bring the Holiday Garden House into your world and witness the blossoming of romance and tranquility! The soft LED lights add a magical glow,
+                        making it the perfect addition to your bookshelf or a thoughtful Christmas gift for DIY enthusiasts. Includes: openable windows, 14 variant
+                        flower types, retro home style, french floriculture, and a rural style. Approximately 5 hours of assembly time required.
+                    </p>
+                    <p>PRICE: $46.99</p>
+                    <p id="rolifeGardenWishlist">AMOUNT LEFT TO SAVE: $46.99</p>
+                </div>
+                <span>&times;</span>
+            </div>
+        </div>
+
+        <!--
+        <div id="wishlist-card-area">
+            <div id="wishlist-card">
+                <div class="wishlist-child">
+                    <img class="wishlist-img" src="images/rolife.webp" alt="rolife book nook set of a garden house"/>
+                </div>
+                <div class="wishlist-child">
+                    <a href="https://www.rolifeonline.com/products/rolife-holiday-garden-house-book-nook-kit-tgb06" target="_blank">
+                        <p>Rolife Book Nook - Holiday Garden House</p>
+                    </a>
+                    <p>
+                        Bring the Holiday Garden House into your world and witness the blossoming of romance and tranquility! The soft LED lights add a magical glow,
+                        making it the perfect addition to your bookshelf or a thoughtful Christmas gift for DIY enthusiasts. Includes: openable windows, 14 variant
+                        flower types, retro home style, french floriculture, and a rural style. Approximately 5 hours of assembly time required.
+                    </p>
+                    <p>PRICE: $46.99 USD</p>
+                </div>
+                <span>&times;</span>
+            </div>
+        <div id="wishlist-add">
+                <button id="openPopup" class="btn">Add a new item to wishlist</button>
+                <div id="popupForm">
+                    <div class="form-content">
+                        <span class="close-btn" id="closePopup">&times;</span>
+                        <h2>Add an Item</h2>
+                        <form id="popupInfoForm">
+                            <div class="input-group">
+                                <label for="title">Item Title</label>
+                                <input type="text" id="title" placeholder="i.e Rolife DIY Book Nook" required/>
+                            </div>
+                            <div class="input-group">
+                                <label for="description">Item Description</label>
+                                <textarea id="description" placeholder="Enter product description" required></textarea>
+                            </div>
+                            <div class="input-group">
+                                <label for="price">Item Price</label>
+                                <input type="text" id="price" placeholder="i.e 49.99" required/>
+                            </div>
+                            <div class="input-group">
+                                <label for="image">Item Image</label>
+                                <input type="file" id="fileUpload" name="fileUpload" accept="img/*"/>
+                            </div>
+                            <button type="submit" id="submitInformation" class="btn">Add</button>
+                        </form>
+                    </div>
+                        <button type="submit" id="submitHabitInformation" class="btn">Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    -->
+
+    </main>
+
+
+    <footer class="footer">
+        <div class="footerdiv">
+            <p id="footer-text">&copy; 2026 . Placeholder footer design.</p>
+        </div>
+
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

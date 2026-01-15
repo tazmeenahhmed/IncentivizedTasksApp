@@ -1,6 +1,3 @@
-/* Navbar linking */
-
-
 /* Checkbox toggling & Money counter*/
 const listContainer = document.getElementsByClassName("check-container");
 const valueDisplay = document.getElementById('savedAmount');
@@ -163,12 +160,80 @@ habitForm.addEventListener('submit', function(e) {
     habitForm.reset();
 });
 
-/* 
-    LINKS TO MAKING A AUTO RESET TIMER:
-    https://www.allwebdevhelp.com/javascript/js-help-tutorials.php?i=44460
-    https://www.youtube.com/watch?v=rdn4XR518uI
-    https://codepal.ai/code-generator/query/3gxFmoPS/javascript-countdown-reset-midnight
-*/
+/* Add wishlist item popup form*/
+const wishlistPopupForm = document.getElementById("wishlistPopup");
+const openWishlistPopupBtn = document.getElementById("openWishlistPopup");
+const closeWishlistPopupBtn = document.getElementById("closeWishlistPopup");
+const submitWishlistBtn = document.getElementById("submitWishlistInformation");
+const wishlistForm = document.getElementById("wishlistPopupForm");
+const wishlistDiv = document.getElementById("wishlist-card-area");
+
+
+openWishlistPopupBtn.addEventListener('click', function() {
+    wishlistPopupForm.style.display = 'flex';
+});
+
+closeWishlistPopupBtn.addEventListener('click', function() {
+    wishlistPopupForm.style.display = 'none';
+});
+
+submitWishlistBtn.addEventListener('click', function() {
+    wishlistPopupForm.style.display = 'none';
+});
+
+window.addEventListener('click', function(event) {
+    if(event.target == wishlistPopupForm) {
+        wishlistPopupForm.style.display = 'none';
+    }
+});
+
+habitForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const itemName = document.getElementById('wishlistTitle');
+    const itemDesc = document.getElementById('wishlistDesc');
+    const itemPrice = document.getElementById('wishlistPrice');
+    const itemLink = document.getElementById('wishlistLink');
+    const itemImage = document.getElementById('wishlistImage');
+
+    const outerDiv = document.createElement('div');
+    outerDiv.setAttribute('class', 'wishlist-card');
+
+    const imgDiv = document.createElement('div');
+    imgDiv.setAttribute('class', 'wishlist-card-child');
+    const img = document.createElement('img');
+    img.setAttribute('class', 'wishlist-img');
+    img.setAttribute('src', itemImage.value);
+    imgDiv.appendChild(img);
+
+    const contentDiv = document.createElement('div');
+    imgDiv.setAttribute('class', 'wishlist-card-child');
+
+    const a = document.createElement('a');
+    a.setAttribute('href', itemLink.value);
+    a.setAttribute('target', 'blank');
+    const contentP = document.createElement('p');
+    contentP.textContent = itemName.value;
+    a.appendChild(contentP);
+    contentDiv.appendChild(a);
+
+    const descP = document.createElement('p');
+    descP.textContent = itemDesc.value;
+    contentDiv.appendChild(descP);
+
+    const priceP = document.createElement('p');
+    priceP.textContent = itemPrice.value;
+    contentDiv.appendChild(priceP);
+
+    const amountleftP = document.createElement('p');
+    amountleftP.setAttribute('id', wishlistLink + '-wishlist');
+    contentDiv.appendChild(amountleftP);
+
+    outerDiv.appendChild(imgDiv);
+    outerDiv.appendChild(contentDiv);
+    wishlistDiv.appendChild(outerDiv);
+    habitForm.reset();
+});
 
 /* Timer countdown */
 const daysElement = document.getElementByClassName('days');
