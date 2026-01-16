@@ -323,7 +323,7 @@ input {
     background-color: rgb(255 242 235 / 0.5);
 }
 
-#wishlist-title h2, p {
+#wishlist-title h2, #wishlist-title p {
     text-align: center;
 }
 
@@ -336,7 +336,6 @@ input {
 }
 
 #wishlist-add {
-    height: 100;
     width: 90%;
     padding: 20px;
     margin: auto;
@@ -360,6 +359,7 @@ input {
     background-color: rgba(0, 0, 0, 0.5);
     justify-content: center;
     align-items: center;
+    z-index: 20;
 }
 
 .wishlist-card {
@@ -379,7 +379,8 @@ input {
     column-gap: 20px;
 }
 
-.wishlist-card-child p {
+.wishlist-card-child {
+    flex: 1;
     text-align: left;
 }
 
