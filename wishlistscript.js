@@ -71,11 +71,6 @@ wishlistForm.addEventListener('submit', function(e) {
     priceP.textContent = 'PRICE: $' + itemPrice.value;
     contentDiv.appendChild(priceP);
 
-    const amountleftP = document.createElement('p');
-    amountleftP.setAttribute('id', wishlistLink + '-wishlist');
-    amountleftP.textContent = 'AMOUNT LEFT: $'
-    contentDiv.appendChild(amountleftP);
-
     const span = document.createElement('span');
     span.setAttribute('class', 'wishlist-span');
     span.innerHTML = "&times;";

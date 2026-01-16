@@ -1,7 +1,7 @@
 /* Checkbox toggling & Money counter*/
 const listContainer = document.getElementsByClassName("check-container");
 const valueDisplay = document.getElementById('savedAmount');
-let totalValue = 0; 
+let totalValue = 0;
 
 document.addEventListener('click', function(e) {
     if (e.target.tagName === 'LI') {
