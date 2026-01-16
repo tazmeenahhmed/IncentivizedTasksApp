@@ -283,6 +283,36 @@ input {
 
 /***** HOW IT WORKS PAGE *****/
 
+#about-title {
+    height: 100;
+    width: 85%;
+    padding: 20px;
+    margin: auto;
+    background-color: rgb(255 242 235 / 0.5);
+}
+
+.explanation-box {
+    height: 100;
+    width: 85%;
+    padding: 20px;
+    margin: 30px auto;
+    background-color: rgb(255 242 235 / 0.5);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.explanation-box p, h2 {
+    text-align: left;
+}
+
+.about-img {
+    height: 300px;
+    width: 300px;
+}
+
 /***** WISHLIST PAGE *****/
 
 #wishlist-title {
