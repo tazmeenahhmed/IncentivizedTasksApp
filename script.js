@@ -182,19 +182,19 @@ submitWishlistBtn.addEventListener('click', function() {
 });
 
 window.addEventListener('click', function(event) {
-    if(event.target == wishlistPopupForm) {
+    if(event.target === wishlistPopupForm) {
         wishlistPopupForm.style.display = 'none';
     }
 });
 
-habitForm.addEventListener('submit', function(e) {
+wishlistForm.addEventListener('submit', function(e) {
     e.preventDefault();
 
     const itemName = document.getElementById('wishlistTitle');
     const itemDesc = document.getElementById('wishlistDesc');
     const itemPrice = document.getElementById('wishlistPrice');
     const itemLink = document.getElementById('wishlistLink');
-    const itemImage = document.getElementById('wishlistImage');
+    const itemImage = document.getElementById('wishlistFileUpload');
 
     const outerDiv = document.createElement('div');
     outerDiv.setAttribute('class', 'wishlist-card');
@@ -207,7 +207,7 @@ habitForm.addEventListener('submit', function(e) {
     imgDiv.appendChild(img);
 
     const contentDiv = document.createElement('div');
-    imgDiv.setAttribute('class', 'wishlist-card-child');
+    contentDiv.setAttribute('class', 'wishlist-card-child');
 
     const a = document.createElement('a');
     a.setAttribute('href', itemLink.value);
@@ -232,7 +232,7 @@ habitForm.addEventListener('submit', function(e) {
     outerDiv.appendChild(imgDiv);
     outerDiv.appendChild(contentDiv);
     wishlistDiv.appendChild(outerDiv);
-    habitForm.reset();
+    wishlistForm.reset();
 });
 
 /* Timer countdown */
